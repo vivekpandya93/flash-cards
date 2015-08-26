@@ -1,5 +1,9 @@
-app.controller('MainController', function ($scope, whateverName) {
-	$scope.flashCards = whateverName;
+app.controller('MainController', function ($scope, FlashCardsFactory) {
+	// $scope.flashCards = FlashCardsFactory;
+		
+	FlashCardsFactory.getFlashCards().then(function(value){
+		$scope.flashCards = value;
+	});
 
 	$scope.answerQuestion = function (answer, flashCard) {
 		if (!flashCard.answered) {
@@ -7,4 +11,17 @@ app.controller('MainController', function ($scope, whateverName) {
 			flashCard.answeredCorrectly = answer.correct;
 		}
 	}
+
+
+	$scope.categories = [
+    'MongoDB',
+    'Express',
+    'Angular',
+    'Node'
+	];
+
+	$scope.getCategoryCards = function(category) {
+		
+	}
+
 });
