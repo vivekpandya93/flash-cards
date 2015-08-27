@@ -17,7 +17,18 @@ app.factory('FlashCardsFactory', function ($http) {
     };
   });
 
+app.controller('StatsController', function ($scope, ScoreFactory) {
+      $scope.scores = ScoreFactory;
+  });
 
+app.factory('ScoreFactory', function () {
+
+    return {
+        correct: 0,
+        incorrect: 0
+    };
+
+});
 
 app.value('whateverName', [
     {
