@@ -1,20 +1,21 @@
 var app = angular.module('flashCards', []);
 
 app.factory('FlashCardsFactory', function ($http) {
-    return { 
+    return {
         getFlashCards: function (category) {
-            if(!category) { 
+            if(!category) {
                 return $http.get('/cards').then(function(response){
                     return (response.data)
-                }) 
-            }   
+                })
+            }
             else {
                 return $http.get('/cards?category=' + category).then(function(response) {
                     return response.data;
                 })
-            }   
-        };
-    });
+            }
+        }
+    };
+  });
 
 
 
